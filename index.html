@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>adam's inbox</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      width: 100%;
+    }
+    input, textarea, button {
+      margin: 5px 0;
+      padding: 10px;
+      font-size: 1rem;
+    }
+    button {
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>welcome to my inbox</h1>
+  </div>
+  <form id="questionForm">
+    <input type="email" id="userEmail" placeholder="Your Email" required>
+    <textarea name="message" id="userMessage" placeholder="Your Question" rows="4" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    document.getElementById("questionForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Get user email and message from input fields
+      const userEmail = document.getElementById("userEmail").value;
+      const userMessage = document.getElementById("userMessage").value;
+
+      // Use FormSubmit with dynamically set email in the URL
+      fetch(`https://formsubmit.co/${userEmail}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage })
+      })
+      .then(response => response.json())
+      .then(data => alert("Your message has been sent!"))
+      .catch(error => alert("There was an error. Please try again."));
+    });
+  </script>
+</body>
+</html>
