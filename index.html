@@ -23,16 +23,16 @@
       text-transform: lowercase;
     }
     h1 {
-      margin-bottom: 3px; /* Reduced spacing */
+      margin-bottom: 5px; /* Reduced spacing */
       color: #ffffff;
     }
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%;
-      max-width: 400px;
-      padding: 15px;
+      width: 90%; /* Takes up most of the screen on smaller devices */
+      max-width: 400px; /* Limits the width on larger screens */
+      padding: 20px;
       background-color: #333333;
       border-radius: 8px;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
@@ -49,7 +49,7 @@
       border-radius: 5px;
       background-color: #2a2a2a;
       color: #e0e0e0;
-      border: 1px solid #555555;
+      border: 2px solid #555555;
       width: 100%;
       resize: none; /* Disabled resizing */
     }
@@ -66,6 +66,18 @@
     }
     button:hover {
       background-color: #5a6268;
+    }
+
+    /* Additional media query for larger screens */
+    @media (min-width: 768px) {
+      .container {
+        width: 50%; /* Ensures it doesn't take up the entire screen on tablets and monitors */
+      }
+    }
+    @media (min-width: 1200px) {
+      .container {
+        width: 40%; /* Limits the width on very large monitors */
+      }
     }
   </style>
 </head>
