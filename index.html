@@ -20,6 +20,7 @@
       font-family: Arial, sans-serif;
       background-color: #1e1e1e; /* Dark background */
       color: #e0e0e0; /* Light gray text for contrast */
+      text-transform: lowercase; /* make all text lowercase */
     }
     h1 {
       margin-bottom: 20px;
@@ -54,7 +55,7 @@
     }
     button {
       cursor: pointer;
-      background-color: #4CAF50;
+      background-color: #6c757d; /* Softer gray color for button */
       color: white;
       border: none;
       padding: 10px;
@@ -64,18 +65,18 @@
       width: 100%; /* Full width of the container */
     }
     button:hover {
-      background-color: #45a049; /* Darker green on hover */
+      background-color: #5a6268; /* Slightly darker gray on hover */
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Welcome to My Inbox</h1>
+    <h1>welcome to my inbox</h1>
     <form action="https://formsubmit.co/6bdfccabc1e5e889b40d38fcdb7b7f20" method="POST">
       <!-- Redirects back to the qnasite page after submission -->
       <input type="hidden" name="_next" value="https://adammady.github.io/qnasite/">
-      <textarea name="message" placeholder="Your question (anonymous)" rows="4" required></textarea>
-      <button type="submit">Send</button>
+      <textarea name="message" placeholder="your question (anonymous)" rows="4" required></textarea>
+      <button type="submit">send</button>
     </form>
   </div>
 </body>
