@@ -17,13 +17,13 @@
       min-height: 100vh;
       margin: 0;
       text-align: center;
-      font-family: Arial, sans-serif;
+      font-family: Helvetica, Arial, sans-serif; /* Changed font to Helvetica */
       background-color: #1e1e1e;
       color: #e0e0e0;
       text-transform: lowercase;
     }
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 10px; /* Reduced spacing */
       color: #ffffff;
     }
     .container {
@@ -47,11 +47,11 @@
       padding: 10px;
       font-size: 1rem;
       border-radius: 5px;
-      resize: none;
       background-color: #2a2a2a;
       color: #e0e0e0;
       border: 1px solid #555555;
       width: 100%;
+      resize: none; /* Disabled resizing */
     }
     button {
       cursor: pointer;
@@ -67,10 +67,6 @@
     button:hover {
       background-color: #5a6268;
     }
-    /* Hidden honeypot field */
-    .hidden-field {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -79,8 +75,6 @@
     <form action="https://formsubmit.co/6bdfccabc1e5e889b40d38fcdb7b7f20" method="POST">
       <!-- Redirects back to the qnasite page after submission -->
       <input type="hidden" name="_next" value="https://adammady.github.io/qnasite/">
-      <!-- Honeypot field for spam protection -->
-      <input type="text" name="_honeypot" class="hidden-field" placeholder="Leave this field blank">
       <textarea name="message" placeholder="your question (anonymous)" rows="4" required></textarea>
       <button type="submit">send</button>
     </form>
