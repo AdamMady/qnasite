@@ -14,36 +14,52 @@
       text-align: center;
       font-family: Arial, sans-serif;
       flex-direction: column;
+      background-color: #f0f0f0; /* Light gray background */
+      color: #333; /* Dark gray text */
     }
     h1 {
       margin-bottom: 20px;
+      color: #333; /* Dark gray text */
     }
     form {
       display: flex;
       flex-direction: column;
-      max-width: 300px;
+      max-width: 90%;
       width: 100%;
+      max-width: 400px; /* Limits form width on larger screens */
+      background-color: #ffffff; /* White background for contrast */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
     textarea, button {
       margin: 5px 0;
       padding: 10px;
       font-size: 1rem;
+      border: 1px solid #ccc; /* Light gray border */
+      border-radius: 5px;
     }
     button {
       cursor: pointer;
       background-color: #4CAF50;
       color: white;
       border: none;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049; /* Slightly darker green on hover */
     }
   </style>
 </head>
 <body>
   <div>
-    <h1>welcome to my inbox</h1>
+    <h1>Welcome to My Inbox</h1>
   </div>
   <form action="https://formsubmit.co/6bdfccabc1e5e889b40d38fcdb7b7f20" method="POST">
-    <textarea name="message" placeholder="your question (anonymous)" rows="4" required></textarea>
-    <button type="submit">send</button>
+    <!-- Redirects back to the qnasite page after submission -->
+    <input type="hidden" name="_next" value="https://adammady.github.io/qnasite/">
+    <textarea name="message" placeholder="Your question (anonymous)" rows="4" required></textarea>
+    <button type="submit">Send</button>
   </form>
 </body>
 </html>
