@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>adam's inbox</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
       text-align: center;
       font-family: Arial, sans-serif;
-      flex-direction: column;
       background-color: #1e1e1e; /* Dark background */
       color: #e0e0e0; /* Light gray text for contrast */
     }
@@ -21,33 +25,43 @@
       margin-bottom: 20px;
       color: #ffffff; /* White text for header */
     }
-    form {
+    .container {
       display: flex;
       flex-direction: column;
-      width: 90%;
+      align-items: center;
+      width: 100%;
       max-width: 400px;
-      background-color: #333333; /* Dark gray form background */
       padding: 20px;
+      background-color: #333333; /* Dark gray form background */
       border-radius: 8px;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
     }
-    textarea, button {
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    textarea {
       margin: 10px 0;
       padding: 10px;
       font-size: 1rem;
       border-radius: 5px;
-    }
-    textarea {
+      resize: none;
       background-color: #2a2a2a; /* Dark background for textarea */
       color: #e0e0e0; /* Light text */
       border: 1px solid #555555; /* Dark border */
+      width: 100%; /* Full width of the container */
     }
     button {
       cursor: pointer;
       background-color: #4CAF50;
       color: white;
       border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 1rem;
       transition: background-color 0.3s;
+      width: 100%; /* Full width of the container */
     }
     button:hover {
       background-color: #45a049; /* Darker green on hover */
@@ -55,14 +69,14 @@
   </style>
 </head>
 <body>
-  <div>
+  <div class="container">
     <h1>Welcome to My Inbox</h1>
+    <form action="https://formsubmit.co/6bdfccabc1e5e889b40d38fcdb7b7f20" method="POST">
+      <!-- Redirects back to the qnasite page after submission -->
+      <input type="hidden" name="_next" value="https://adammady.github.io/qnasite/">
+      <textarea name="message" placeholder="Your question (anonymous)" rows="4" required></textarea>
+      <button type="submit">Send</button>
+    </form>
   </div>
-  <form action="https://formsubmit.co/6bdfccabc1e5e889b40d38fcdb7b7f20" method="POST">
-    <!-- Redirects back to the qnasite page after submission -->
-    <input type="hidden" name="_next" value="https://adammady.github.io/qnasite/">
-    <textarea name="message" placeholder="Your question (anonymous)" rows="4" required></textarea>
-    <button type="submit">Send</button>
-  </form>
 </body>
 </html>
