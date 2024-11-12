@@ -12,7 +12,7 @@
     }
     body {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       min-height: 100vh;
       margin: 0;
@@ -28,6 +28,33 @@
       color: #ffffff;
       font-size: 2em;
       white-space: nowrap;
+    }
+    .top-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      background-color: #333333;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    }
+    .top-container button {
+      flex: 1;
+      padding: 10px 0;
+      background-color: #4e4e4e;
+      color: #e0e0e0;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 0 5px;
+      border-radius: 5px;
+    }
+    .top-container button:hover {
+      background-color: #5a5a5a;
     }
     .container {
       display: flex;
@@ -57,7 +84,7 @@
       resize: none;
       box-sizing: border-box;
     }
-    button {
+    button.submit-button {
       cursor: pointer;
       background-color: #6c757d;
       color: white;
@@ -68,23 +95,28 @@
       transition: background-color 0.3s;
       width: 100%;
       box-sizing: border-box;
+      margin-top: 10px;
     }
-    button:hover {
+    button.submit-button:hover {
       background-color: #5a6268;
     }
   </style>
 </head>
 <body>
+  <!-- Top Buttons Container -->
+  <div class="top-container">
+    <button onclick="window.location.href='thoughts.html'">my thoughts</button>
+    <button onclick="window.location.href='history.html'">qna history</button>
+  </div>
+
+  <!-- Main Form Container -->
   <div class="container">
     <h1>welcome to my inbox</h1>
     <form action="https://formsubmit.co/6bdfccabc1e5e889b40d38fcdb7b7f20" method="POST">
       <input type="hidden" name="_next" value="https://adammady.github.io/qnasite/">
       <textarea name="message" placeholder="ask a question" rows="4" required></textarea>
-      <button type="submit">send anonymously</button>
+      <button type="submit" class="submit-button">send anonymously</button>
     </form>
-<br>
-<p><a href="thoughts.html" style="color: white;">or check out my thoughts</a></p>
-<p><a href="history.html" style="color: white;">qna history</a></p>
   </div>
 </body>
 </html>
