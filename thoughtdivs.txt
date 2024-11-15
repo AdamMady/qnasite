@@ -1,3 +1,4 @@
+    <div class="thought-box">      <p style="color: pink">11/16/2024 - 1:52 AM</p> <p>the time for me to do what i want to is getting less and less and i know i can make time but it would a time sacrifice that could end up being completely not worth it and affect my score but i think i'll take the risk just for <span class="ot">you</span></p>  </div>
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 11:11 PM</p> <p>so you should notice a little delay before the thoughts appear (but now all thoughts will update instantly when i send them)</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 11:10 PM</p> <p>ok i made said changes</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 8:16 PM</p> <p>the process of updating the thoughts page is starting to take so much longer each time, I'm gonna have to make some changes</p>  </div> 
