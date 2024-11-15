@@ -1,6 +1,3 @@
-    <div class="thought-box">      <p style="color: pink">11/15/2024 - 11:46 PM</p> <p>grape</p>  </div>
-    <div class="thought-box">      <p style="color: pink">11/15/2024 - 11:32 PM</p> <p>quick test again</p>  </div>
-    <div class="thought-box">      <p style="color: pink">11/15/2024 - 11:26 PM</p> <p>test again</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 11:11 PM</p> <p>so you should notice a little delay before the thoughts appear (but now all thoughts will update instantly when i send them)</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 11:10 PM</p> <p>ok i made said changes</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 8:16 PM</p> <p>the process of updating the thoughts page is starting to take so much longer each time, I'm gonna have to make some changes</p>  </div> 
@@ -9,7 +6,7 @@
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 7:11 PM</p> <p>so interesting that no matter where the pen/pencil is in your hand you can always get it to the usual writing position</p>  </div> 
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 6:53 PM</p> <p>look into the sky to make things right</p>  </div> 
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 6:40 PM</p> <p>best thing about this is that whenever I find myself in a situation in which I'm quiet in a loud place and not doing anything i can just do exactly this</p>  </div> 
-    <div class="thought-box">      <p style="color: pink">11/15/2024 - 6:37 PM</p> <p>here's a weird thing: people i follow almost everyone who follows me but they mostly go completely back on their follow when i do that, why does this happen? is there some following guideline that i don't know that is just set in place? don't understand people mostly so don't know why im wondering about this specific thing right now</p>  </div> 
+    <div class="thought-box">      <p style="color: pink">11/15/2024 - 6:37 PM</p> <p>here's a weird thing: i follow almost everyone who follows me but they mostly go completely back on their follow when i do that, why does this happen? is there some following guideline that i don't know that is just set in place? don't understand people mostly so don't know why im wondering about this specific thing right now</p>  </div> 
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 6:30 PM</p> <p>time is running out</p>  </div> 
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 6:20 PM</p> <p>why don't pencils have a cover so they don't roll around everywhere and fall every time. i still drop pens all thr time even with the cover but it's the thought that counts</p>  </div> 
     <div class="thought-box">      <p style="color: pink">11/15/2024 - 6:10 PM</p> <p>fuck man i can't focus on any lesson because of this song stuck in my head the song being <span class="ot">you</span></p>  </div> 
