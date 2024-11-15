@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>random thoughts i wanted to write down</title>
+  <title>random thoughts</title>
   <style>
     body {
       display: flex;
@@ -51,7 +51,8 @@
 
     async function fetchThoughts() {
       try {
-        const response = await fetch(thoughtsUrl);
+        const cacheBuster = `?t=${new Date().getTime()}`;
+        const response = await fetch(thoughtsUrl + cacheBuster);
         if (!response.ok) throw new Error(`Error fetching thoughts: ${response.statusText}`);
         const thoughtsHtml = await response.text();
         thoughtsContainer.innerHTML = thoughtsHtml;
