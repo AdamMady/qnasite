@@ -1,3 +1,4 @@
+    <div class="thought-box">      <p style="color: pink">11/16/2024 - 5:43 PM</p> <p>man fuck. i'm going</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 5:37 PM</p> <p>don't wanna go anywhere</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 5:24 PM</p> <p>y'know i really wanna make a reality section to this site where it's weekly voice notes of how my life is going but i feel like it would be embarrassing (because it is) and would be used against me in some way  </p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 5:16 PM</p> <p>isn't it crazy how anything even exists?</p>  </div>
