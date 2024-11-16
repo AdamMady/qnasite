@@ -42,7 +42,6 @@
 <body>
   <div class="container">
     <p><a href="/qnasite/" style="display: inline-block; padding: 10px 20px; background-color: #474747; color: lightgray; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#5a6268'" onmouseout="this.style.backgroundColor='#474747'">back to inbox</a></p>
-    </p>
     <h1>random thoughts i wanted to write down</h1>
     <div id="thoughts"></div>
   </div>
@@ -52,8 +51,7 @@
 
     async function fetchThoughts() {
       try {
-        const cacheBuster = `?t=${new Date().getTime()}`;
-        const response = await fetch(thoughtsUrl + cacheBuster, { cache: "no-cache" });
+        const response = await fetch(thoughtsUrl, { cache: "no-cache" });
         if (!response.ok) throw new Error(`Error fetching thoughts: ${response.statusText}`);
         const thoughtsHtml = await response.text();
         thoughtsContainer.innerHTML = thoughtsHtml;
@@ -158,7 +156,6 @@
 
     fetchThoughts();
     setInterval(fetchThoughts, 5000);
-    setInterval(updateRelativeTimes, 60000);
   </script>
 </body>
 </html>
