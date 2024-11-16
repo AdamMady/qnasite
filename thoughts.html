@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>random thoughts i wanted to write down</title>
+  <title>random thoughts</title>
   <style>
     body {
       display: flex;
@@ -26,7 +26,7 @@
       padding: 5px;
       margin: 15px 0;
       background-color: #2b2b2b;
-      word-break: break-word; /* Ensures long words or URLs wrap within the box */
+      word-break: break-word;
     }
     a {
       color: #4CAF50;
@@ -35,7 +35,7 @@
     .ot {
       color: black;
       font-weight: bold;
-      -webkit-text-stroke: 0.5px white; /* White outline */
+      -webkit-text-stroke: 0.5px white;
     }
   </style>
 </head>
@@ -49,6 +49,7 @@
   <script>
     const thoughtsContainer = document.getElementById('thoughts');
     const thoughtsUrl = "https://raw.githubusercontent.com/AdamMady/qnasite/main/thoughtdivs.txt";
+
     async function fetchThoughts() {
       try {
         const cacheBuster = `?t=${new Date().getTime()}`;
@@ -62,6 +63,7 @@
         console.error(error);
       }
     }
+
     function parseAndStorePostDates() {
       const dateElements = thoughtsContainer.querySelectorAll('p[style="color: pink"]');
       dateElements.forEach(el => {
@@ -97,29 +99,36 @@
       date.setUTCHours(date.getUTCHours() - 2);
       return date;
     }
+
     function formatRelativeTime(diffMs) {
-      const SEC_IN_MS = 1000;
-      const MIN_IN_MS = SEC_IN_MS * 60;
-      const HOUR_IN_MS = MIN_IN_MS * 60;
-      const DAY_IN_MS = HOUR_IN_MS * 24;
-      const WEEK_IN_MS = DAY_IN_MS * 7;
-      const MONTH_IN_MS = DAY_IN_MS * 30;
-      const YEAR_IN_MS = DAY_IN_MS * 365;
+      const MIN_IN_MS = 60 * 1000;
+      const HOUR_IN_MS = 60 * MIN_IN_MS;
+      const DAY_IN_MS = 24 * HOUR_IN_MS;
+      const WEEK_IN_MS = 7 * DAY_IN_MS;
+      const MONTH_IN_MS = 30 * DAY_IN_MS;
+      const YEAR_IN_MS = 365 * DAY_IN_MS;
+
       let remainingMs = diffMs;
+
       const years = Math.floor(remainingMs / YEAR_IN_MS);
       remainingMs %= YEAR_IN_MS;
+
       const months = Math.floor(remainingMs / MONTH_IN_MS);
       remainingMs %= MONTH_IN_MS;
+
       const weeks = Math.floor(remainingMs / WEEK_IN_MS);
       remainingMs %= WEEK_IN_MS;
+
       const days = Math.floor(remainingMs / DAY_IN_MS);
       remainingMs %= DAY_IN_MS;
+
       const hours = Math.floor(remainingMs / HOUR_IN_MS);
       remainingMs %= HOUR_IN_MS;
+
       const minutes = Math.floor(remainingMs / MIN_IN_MS);
-      remainingMs %= MIN_IN_MS;
-      const seconds = Math.floor(remainingMs / SEC_IN_MS);
+
       const timeComponents = [];
+
       if (years > 0) {
         timeComponents.push(`${years} year${years !== 1 ? 's' : ''}`);
         if (months > 0) timeComponents.push(`${months} month${months !== 1 ? 's' : ''}`);
@@ -140,12 +149,13 @@
         if (minutes > 0) timeComponents.push(`${minutes} min${minutes !== 1 ? 's' : ''}`);
       } else if (minutes > 0) {
         timeComponents.push(`${minutes} min${minutes !== 1 ? 's' : ''}`);
-        if (seconds > 0) timeComponents.push(`${seconds} sec${seconds !== 1 ? 's' : ''}`);
       } else {
         return 'Just now';
       }
+
       return timeComponents.join(' ') + ' ago';
     }
+
     fetchThoughts();
     setInterval(fetchThoughts, 5000);
     setInterval(updateRelativeTimes, 1000);
