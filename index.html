@@ -3,65 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>random thoughts i wanted to write down</title>
+  <title>adam's inbox</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
       min-height: 100vh;
+      margin: 0;
+      text-align: center;
       font-family: Helvetica, Arial, sans-serif;
       background-color: #1e1e1e;
       color: #e0e0e0;
-      text-align: center;
+      text-transform: lowercase;
       padding: 20px;
     }
+    h1 {
+      margin-bottom: 5px;
+      color: #ffffff;
+      font-size: 2em;
+      white-space: nowrap;
+    }
+    .top-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 10px;
+      background-color: #333333;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    }
+    .top-container button {
+      flex: 1;
+      padding: 10px 0;
+      background-color: #4e4e4e;
+      color: #e0e0e0;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 0 5px;
+      border-radius: 5px;
+    }
+    .top-container button:hover {
+      background-color: #5a5a5a;
+    }
     .container {
-      max-width: 650px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background-color: #333333;
+      border-radius: 8px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
       width: 100%;
     }
-    .thought-box {
-      border: 1px solid #666565;
-      border-radius: 8px;
-      padding: 5px;
-      margin: 15px 0;
-      background-color: #2b2b2b;
-      word-break: break-word; /* Ensures long words or URLs wrap within the box */
+    textarea {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      border: 1px solid #555555;
+      width: 100%;
+      resize: none;
+      box-sizing: border-box;
     }
-    a {
-      color: #4CAF50;
-      text-decoration: none;
+    button.submit-button {
+      cursor: pointer;
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 10px;
+    }
+    button.submit-button:hover {
+      background-color: #5a6268;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <p>
-      <a href="/qnasite/" style="display: inline-block; padding: 10px 20px; background-color: #474747; color: lightgray; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;" 
-         onmouseover="this.style.backgroundColor='#5a6268'" 
-         onmouseout="this.style.backgroundColor='#474747'">back to inbox</a>
-    </p>
-    <h1>random thoughts i wanted to write down</h1>
-    <div id="thoughts"></div>
+  <!-- Top Buttons Container -->
+  <div class="top-container">
+    <button onclick="window.location.href='thoughts.html'">my thoughts</button>
+    <button onclick="window.location.href='history.html'">qna history</button>
   </div>
 
-  <script>
-    const thoughtsContainer = document.getElementById('thoughts');
-    const thoughtsUrl = "https://raw.githubusercontent.com/AdamMady/qnasite/refs/heads/main/thoughtdivs.txt";
-
-    async function fetchThoughts() {
-      try {
-        const cacheBuster = `?t=${new Date().getTime()}`;
-        const response = await fetch(thoughtsUrl + cacheBuster, { cache: "no-cache" });
-        if (!response.ok) throw new Error(`Error fetching thoughts: ${response.statusText}`);
-        const thoughtsHtml = await response.text();
-        thoughtsContainer.innerHTML = thoughtsHtml;
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchThoughts();
-    setInterval(fetchThoughts, 5000);
-  </script>
+  <!-- Main Form Container -->
+  <div class="container">
+    <h1>welcome to my inbox</h1>
+    <form action="https://formsubmit.co/6bdfccabc1e5e889b40d38fcdb7b7f20" method="POST">
+      <input type="hidden" name="_next" value="https://adammady.github.io/qnasite/">
+      <textarea name="message" placeholder="ask a question" rows="4" required></textarea>
+      <button type="submit" class="submit-button">send anonymously</button>
+    </form>
+  </div>
 </body>
 </html>
