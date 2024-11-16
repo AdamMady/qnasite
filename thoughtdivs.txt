@@ -1,3 +1,4 @@
+    <div class="thought-box">      <p style="color: pink">11/16/2024 - 8:38 PM</p> <p>I wanna go home</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 7:25 PM</p> <p>it feels like i just barely exist</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 6:32 PM</p> <p>everything is utterly useless, it's true</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 6:04 PM</p> <p>i hate going anywhere that isn't home, home is the place i wanna stay in, all the time and theres no exception to the time or place. only exception i'd say is the person there in which it may completely change the idea of going. and now that i think about it sometimes i wanna go outside not anywhere in particular but just walk in a direction that i've never walked before ever.</p>  </div>
