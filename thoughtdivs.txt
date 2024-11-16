@@ -1,3 +1,4 @@
+    <div class="thought-box">      <p style="color: pink">11/16/2024 - 11:06 PM</p> <p>just realised something crazy</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 9:36 PM</p> <p>I really wanna add a view counter to this page that resets daily (and also doesnt count me as a view) but i feel like it's a bad idea in some way that I can't quite pinpoint so I won't do this</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 9:27 PM</p> <p>still haven't made it home</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 8:44 PM</p> <p>I think the only way to type words either: have all the letters uppercase letter or have all the letters lowercase. nothing in between. sadly autocorrect can make The Beginning Of Some Words Uppercase or just capitalizes the first word and or capitalizes the letter I because of i honestly have no idea, and I'd turn it off but too lazy</p>  </div>
