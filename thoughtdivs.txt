@@ -1,3 +1,4 @@
+    <div class="thought-box">      <p style="color: pink">11/16/2024 - 5:16 PM</p> <p>isn't it crazy how anything even exists?</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 2:12 PM</p> <p>i wanna know literally everything but then i'd extremely bored because i know everything but would i really be bored? because if i knew everything then i'd also know nothing as it would cancel out. does that make sense?</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 2:53 AM</p> <p>don't think i'll do the same thing for the qna history as it doesn't matter as much honestly</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/16/2024 - 2:37 AM</p> <p>website just got a huge upgrade, now instead of getting a meaningless timestamp that just doesn't click right away you get how long ago a thought was</p>  </div>
