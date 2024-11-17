@@ -1,3 +1,4 @@
+    <div class="thought-box">      <p style="color: pink">11/18/2024 - 12:34 AM</p> <p>there's a mosquito on my screen, a mosquito on my wall and a mosquito on my shirt and they won't leave me alone</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/18/2024 - 12:18 AM</p> <p>haven't wrote a thought in a while. this is my thought</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/17/2024 - 1:35 PM</p> <p>time is so running out</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/17/2024 - 3:44 AM</p> <p>hell yeah just stay awake for so long until you know it's gonna be a shitty school day tommorow because you won't see anything infront of you</p>  </div>
