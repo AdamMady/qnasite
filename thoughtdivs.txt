@@ -1,3 +1,4 @@
+    <div class="thought-box">      <p style="color: pink">11/18/2024 - 5:13 PM</p> <p>this sentence is false</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/18/2024 - 7:53 AM</p> <p>I heavily need immediate sleep</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/18/2024 - 1:32 AM</p> <p>been working so long on this that i now have an idea of a better song but i also wanna finish what i started because then id find a better song than the better song</p>  </div>
     <div class="thought-box">      <p style="color: pink">11/18/2024 - 1:07 AM</p> <p>im starting to get this realisation that the song will never be perfect and I should just finish it up whenever I can</p>  </div>
