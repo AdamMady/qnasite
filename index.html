@@ -100,16 +100,38 @@
     button.submit-button:hover {
       background-color: #5a6268;
     }
+    .reality-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .reality-container button {
+      flex: 1;
+      padding: 10px 0;
+      background-color: #4e4e4e;
+      color: #e0e0e0;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 0 5px;
+      border-radius: 5px;
+    }
+    .reality-container button:hover {
+      background-color: #5a5a5a;
+    }
   </style>
 </head>
 <body>
-  <!-- Top Buttons Container -->
+
   <div class="top-container">
     <button onclick="window.location.href='thoughts.html'">my thoughts</button>
     <button onclick="window.location.href='history.html'">qna history</button>
   </div>
 
-  <!-- Main Form Container -->
   <div class="container">
     <h1>welcome to my inbox</h1>
     <form action="https://formsubmit.co/6bdfccabc1e5e889b40d38fcdb7b7f20" method="POST">
@@ -117,6 +139,10 @@
       <textarea name="message" placeholder="ask a question" rows="4" required></textarea>
       <button type="submit" class="submit-button">send anonymously</button>
     </form>
+  </div>
+
+  <div class="reality-container">
+    <button onclick="window.location.href='reality.html'">reality</button>
   </div>
 </body>
 </html>
