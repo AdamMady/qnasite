@@ -217,7 +217,7 @@
       const audio = document.createElement('audio');
       audio.className = 'audio-player custom-audio'; // Added 'custom-audio' class
       audio.controls = true;
-      audio.setAttribute('controlsList', 'nodownload noplaybackrate');
+      audio.setAttribute('controlsList', 'nodownload');
 
       const source = document.createElement('source');
       source.src = `${baseMusicURL}${encodedTitle}.WAV`;
