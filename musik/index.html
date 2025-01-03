@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>music archive</title>
   <style>
     /* General body styling */
@@ -19,7 +19,7 @@
       margin: 0;
     }
     .container {
-      max-width: 400px;
+      max-width: 600px; /* Increased width for better layout */
       width: 100%;
     }
     .qna {
@@ -34,12 +34,13 @@
       align-items: center;
     }
     .song-cover {
-      max-width: 200px;
-      height: auto;
+      max-width: 200px; /* Set the maximum width */
+      height: auto; /* Maintain aspect ratio */
       border-radius: 8px;
       border: 1px solid #666565;
       margin-bottom: 10px;
     }
+
     .song-title {
       font-weight: bold;
       font-size: 1.2em;
@@ -63,7 +64,7 @@
       max-width: 300px;
     }
     .audio-player::-webkit-media-controls-panel {
-      background-color: #9e9e9e;
+      background-color: #9e9e9e; /* Light gray background */
     }
     .download-button {
       background: none;
@@ -86,6 +87,7 @@
       color: #ccc;
       margin-top: 30px;
     }
+    /* Back button styling */
     .back-button {
       display: inline-block;
       padding: 10px 20px;
@@ -100,6 +102,7 @@
     .back-button:hover {
       background-color: #5a6268;
     }
+    /* Responsive adjustments */
     @media (max-width: 600px) {
       .qna {
         padding: 10px;
@@ -118,8 +121,14 @@
         align-self: center;
       }
     }
+
+    /* Custom audio player styling */
     .custom-audio::-webkit-media-controls-panel {
-      background-color: #9e9e9e;
+      background-color: #9e9e9e; /* Light gray background */
+    }
+    /* Optional: Further customization for other browsers */
+    .custom-audio {
+      /* Add any additional custom styles here */
     }
   </style>
 </head>
@@ -127,16 +136,18 @@
   <div class="container">
     <!-- Back to inbox link -->
     <a href="/qnasite/" class="back-button">back to inbox</a>
+
     <h1>music archive</h1>
-    <!-- Placeholder for songs -->
-    <div class="songs-list"></div>
+
+    <!-- Songs will be dynamically added here by JavaScript -->
+    
     <div class="background-note">
       <p>tried to export them all in the highest quality possible</p>
     </div>
   </div>
 
   <script>
-    // Your song data
+    // Song data with title and date only
     const songs = [
       { title: "happy new year to", date: "january 1st 2025" },
       { title: "the sun is leaking", date: "december 18th 2024" },
@@ -150,83 +161,109 @@
       { title: "good night", date: "november 8th 2024" }
     ];
 
-    // Convert 'december 16th 2024' -> usable Date object
-    const parseDate = str =>
-      new Date(Date.parse(str.replace(/(\d+)(st|nd|rd|th)/, '$1')));
+    // Function to parse date strings to Date objects
+    function parseDate(dateStr) {
+      // Replace ordinal suffixes to ensure correct parsing
+      const cleanedDateStr = dateStr.replace(/(\d+)(st|nd|rd|th)/, '$1');
+      return new Date(Date.parse(cleanedDateStr));
+    }
 
-    // Sort newest first
+    // Sort songs by date (latest first)
     songs.sort((a, b) => parseDate(b.date) - parseDate(a.date));
 
     // Base URLs
     const baseMusicURL = "https://adammady.github.io/qnasite/musik/";
     const baseCoverURL = "https://adammady.github.io/qnasite/cover/";
 
-    const songsList = document.querySelector(".songs-list");
+    // Reference to container
+    const container = document.querySelector('.container');
 
-    // Build song HTML
-    const html = songs
-      .map(song => {
-        const encoded = encodeURIComponent(song.title.toLowerCase());
-        return `
-        <div class="qna">
-          <img
-            class="song-cover"
-            src="${baseCoverURL}${encoded}.png"
-            alt="cover of ${song.title}"
-            onerror="this.src='https://via.placeholder.com/200?text=No+Cover';"
-          />
-          <p class="song-title">${song.title.toLowerCase()}</p>
-          <p class="song-date">${song.date.toLowerCase()}</p>
-          <div class="audio-download-container">
-            <audio
-              class="audio-player custom-audio"
-              controls
-              controlsList="nodownload noplaybackrate"
-              onerror="this.outerHTML='<p style=color:red>Audio not available</p>'"
-            >
-              <source src="${baseMusicURL}${encoded}.WAV" type="audio/wav" />
-            </audio>
-            <button
-              class="download-button"
-              data-file="${baseMusicURL}${encoded}.WAV"
-              data-title="${song.title}.WAV"
-              aria-label="Download ${song.title}"
-            >
-              ⭳
-            </button>
-          </div>
-        </div>
-        `;
-      })
-      .join("");
-
-    // Insert all songs into DOM
-    songsList.innerHTML = html;
-
-    // Only one audio plays at a time
+    // To keep track of currently playing audio
     let currentAudio = null;
-    document.querySelectorAll(".audio-player").forEach(audio => {
-      audio.addEventListener("play", () => {
-        if (currentAudio && currentAudio !== audio) currentAudio.pause();
+
+    // Render songs
+    songs.forEach(song => {
+      const encodedTitle = encodeURIComponent(song.title.toLowerCase());
+
+      // Create song element
+      const qnaDiv = document.createElement('div');
+      qnaDiv.className = 'qna';
+
+      // Cover image
+      const img = document.createElement('img');
+      img.className = 'song-cover';
+      img.src = `${baseCoverURL}${encodedTitle}.png`;
+      img.alt = `cover of ${song.title}`;
+      // Handle image loading errors
+      img.onerror = () => {
+        img.src = 'https://via.placeholder.com/200?text=No+Cover';
+      };
+
+      // Title
+      const title = document.createElement('p');
+      title.className = 'song-title';
+      title.textContent = song.title.toLowerCase();
+
+      // Date
+      const date = document.createElement('p');
+      date.className = 'song-date';
+      date.textContent = song.date.toLowerCase();
+
+      // Audio and Download Container
+      const audioDownloadContainer = document.createElement('div');
+      audioDownloadContainer.className = 'audio-download-container';
+
+      // Audio player
+      const audio = document.createElement('audio');
+      audio.className = 'audio-player custom-audio'; // Added 'custom-audio' class
+      audio.controls = true;
+      audio.setAttribute('controlsList', 'nodownload noplaybackrate');
+
+      const source = document.createElement('source');
+      source.src = `${baseMusicURL}${encodedTitle}.WAV`;
+      source.type = 'audio/wav';
+      audio.appendChild(source);
+
+      // Handle audio loading errors
+      audio.onerror = () => {
+        const errorMsg = document.createElement('p');
+        errorMsg.style.color = 'red';
+        errorMsg.textContent = 'Audio not available';
+        audioDownloadContainer.replaceChild(errorMsg, audio);
+      };
+
+      // Event listener to manage playing one audio at a time
+      audio.addEventListener('play', () => {
+        if (currentAudio && currentAudio !== audio) {
+          currentAudio.pause();
+        }
         currentAudio = audio;
       });
-    });
 
-    // Handle downloads
-    document.querySelectorAll(".download-button").forEach(btn => {
-      btn.addEventListener("click", async e => {
-        e.preventDefault();
-        const fileUrl = btn.dataset.file;
-        const fileName = btn.dataset.title;
+      // Download button
+      const downloadButton = document.createElement('button');
+      downloadButton.className = 'download-button';
+      downloadButton.textContent = '⭳'; // Download symbol
+      downloadButton.setAttribute('aria-label', `Download ${song.title}`);
+
+      // Ensure download works by handling click event
+      downloadButton.addEventListener('click', async (e) => {
+        e.preventDefault(); // Prevent any default behavior
+
+        const fileUrl = `${baseMusicURL}${encodedTitle}.WAV`;
+        const fileName = `${song.title}.WAV`; // Filename with spaces
+
         try {
-          const response = await fetch(fileUrl, { mode: "cors" });
-          if (!response.ok) throw new Error("Network response was not ok");
+          // Fetch the file as a blob
+          const response = await fetch(fileUrl, { mode: 'cors' });
+          if (!response.ok) throw new Error('Network response was not ok');
+
           const blob = await response.blob();
           const url = window.URL.createObjectURL(blob);
 
-          // Create a temporary link
-          const a = document.createElement("a");
-          a.style.display = "none";
+          // Create a temporary link to trigger download
+          const a = document.createElement('a');
+          a.style.display = 'none';
           a.href = url;
           a.download = fileName;
           document.body.appendChild(a);
@@ -235,11 +272,23 @@
           // Cleanup
           window.URL.revokeObjectURL(url);
           document.body.removeChild(a);
-        } catch (err) {
-          alert("Failed to download file.");
-          console.error("Download error:", err);
+        } catch (error) {
+          alert('Failed to download file.');
+          console.error('Download error:', error);
         }
       });
+
+      // Append audio and download button to the container
+      audioDownloadContainer.appendChild(audio);
+      audioDownloadContainer.appendChild(downloadButton);
+
+      // Append all elements to the song div
+      qnaDiv.appendChild(img);
+      qnaDiv.appendChild(title);
+      qnaDiv.appendChild(date);
+      qnaDiv.appendChild(audioDownloadContainer);
+
+      container.insertBefore(qnaDiv, document.querySelector('.background-note'));
     });
   </script>
 </body>
