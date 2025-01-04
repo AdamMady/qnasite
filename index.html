@@ -104,11 +104,12 @@
 </head>
 <body>
 
-<div class="top-container">
-  <button onclick="window.location.replace('thoughts')">my thoughts</button>
-  <button onclick="window.location.replace('history')">qna history</button>
-  <button onclick="window.location.replace('musik')">music arch</button> <!-- New Button Added -->
-</div>
+  <!-- Navigation buttons with window.location.replace(...) -->
+  <div class="top-container">
+    <button onclick="navigateTo('thoughts')">my thoughts</button>
+    <button onclick="navigateTo('history')">qna history</button>
+    <button onclick="navigateTo('musik')">music arch</button> <!-- New Button Added -->
+  </div>
 
   <div class="container">
     <h1>welcome to my inbox</h1>
@@ -120,6 +121,12 @@
   </div>
   
   <br>
-  
+
+  <script>
+    // Replace the current page in history when navigating to subpages
+    function navigateTo(page) {
+      window.location.replace(page);
+    }
+  </script>
 </body>
 </html>
