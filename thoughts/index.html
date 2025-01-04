@@ -41,11 +41,27 @@
 </head>
 <body>
   <div class="container">
-    <p><a href="/qnasite/" style="display: inline-block; padding: 10px 20px; background-color: #474747; color: lightgray; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#5a6268'" onmouseout="this.style.backgroundColor='#474747'">back to inbox</a></p>
+    <!-- "back to inbox" uses window.location.replace(...) -->
+    <p>
+      <a href="/qnasite/"
+         style="display: inline-block; padding: 10px 20px; background-color: #474747; color: lightgray; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;"
+         onmouseover="this.style.backgroundColor='#5a6268'"
+         onmouseout="this.style.backgroundColor='#474747'"
+         onclick="navigateBack(); return false;">
+        back to inbox
+      </a>
+    </p>
+
     <h1>random thoughts i wanted to write down</h1>
     <div id="thoughts"></div>
   </div>
+
   <script>
+    function navigateBack() {
+      // Replace current subpage in history with the homepage
+      window.location.replace('/qnasite/');
+    }
+
     const thoughtsContainer = document.getElementById('thoughts');
     const thoughtsUrl = "https://raw.githubusercontent.com/AdamMady/qnasite/refs/heads/main/thoughtdivs.txt";
 
@@ -155,6 +171,7 @@
     }
 
     fetchThoughts();
+    // Refresh thoughts every 10 minutes
     setInterval(fetchThoughts, 600000);
   </script>
 </body>
