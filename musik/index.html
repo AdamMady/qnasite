@@ -119,12 +119,10 @@
         font-size: 1.5em;
       }
     }
-
     /* Custom audio player styling */
     .custom-audio::-webkit-media-controls-panel {
       background-color: #9e9e9e; /* Light gray background */
     }
-    /* Optional: Further customization for other browsers */
     .custom-audio {
       /* Add any additional custom styles here */
     }
@@ -132,8 +130,10 @@
 </head>
 <body>
   <div class="container">
-    <!-- Back to inbox link -->
-    <a href="/qnasite/" class="back-button">back to inbox</a>
+    <!-- "back to inbox" uses window.location.replace(...) -->
+    <a href="/qnasite/" class="back-button" onclick="navigateBack(); return false;">
+      back to inbox
+    </a>
 
     <h1>music archive</h1>
 
@@ -145,6 +145,10 @@
   </div>
 
   <script>
+    function navigateBack() {
+      window.location.replace('/qnasite/');
+    }
+
     // Song data with title and date only
     const songs = [
       { title: "happy new year to", date: "january 1st 2025" },
@@ -161,7 +165,7 @@
 
     // Function to parse date strings to Date objects
     function parseDate(dateStr) {
-      // Replace ordinal suffixes to ensure correct parsing
+      // Replace ordinal suffixes (st, nd, rd, th)
       const cleanedDateStr = dateStr.replace(/(\d+)(st|nd|rd|th)/, '$1');
       return new Date(Date.parse(cleanedDateStr));
     }
@@ -213,7 +217,7 @@
 
       // Audio player
       const audio = document.createElement('audio');
-      audio.className = 'audio-player custom-audio'; // Added 'custom-audio' class
+      audio.className = 'audio-player custom-audio'; 
       audio.controls = true;
       audio.setAttribute('controlsList', 'nodownload noplaybackrate'); // Remove download and playback rate options
 
@@ -230,7 +234,7 @@
         audioDownloadContainer.replaceChild(errorMsg, audio);
       };
 
-      // Event listener to manage playing one audio at a time
+      // Event listener to ensure only one audio plays at a time
       audio.addEventListener('play', () => {
         if (currentAudio && currentAudio !== audio) {
           currentAudio.pause();
@@ -241,26 +245,25 @@
       // Download button
       const downloadButton = document.createElement('button');
       downloadButton.className = 'download-button';
-      downloadButton.textContent = '⤓'; // Updated download symbol
+      downloadButton.textContent = '⤓'; 
       downloadButton.setAttribute('aria-label', `Download ${song.title}`);
       downloadButton.style.fontFamily = '"Segoe UI Symbol", Arial, sans-serif';
 
-      // Ensure download works by handling click event
+      // Handle download
       downloadButton.addEventListener('click', async (e) => {
-        e.preventDefault(); // Prevent any default behavior
+        e.preventDefault(); // Prevent default anchor behavior
 
         const fileUrl = `${baseMusicURL}${encodedTitle}.WAV`;
-        const fileName = `${song.title}.WAV`; // Filename with spaces
+        const fileName = `${song.title}.WAV`;
 
         try {
-          // Fetch the file as a blob
           const response = await fetch(fileUrl, { mode: 'cors' });
           if (!response.ok) throw new Error('Network response was not ok');
 
           const blob = await response.blob();
           const url = window.URL.createObjectURL(blob);
 
-          // Create a temporary link to trigger download
+          // Create a link and click it to trigger download
           const a = document.createElement('a');
           a.style.display = 'none';
           a.href = url;
@@ -277,16 +280,17 @@
         }
       });
 
-      // Append audio and download button to the container
+      // Add audio player and download button to container
       audioDownloadContainer.appendChild(audio);
       audioDownloadContainer.appendChild(downloadButton);
 
-      // Append all elements to the song div
+      // Add elements to the song div
       qnaDiv.appendChild(img);
       qnaDiv.appendChild(title);
       qnaDiv.appendChild(date);
       qnaDiv.appendChild(audioDownloadContainer);
 
+      // Insert before the background-note
       container.insertBefore(qnaDiv, document.querySelector('.background-note'));
     });
   </script>
