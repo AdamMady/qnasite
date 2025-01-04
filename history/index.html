@@ -26,7 +26,7 @@
       padding: 5px;
       margin: 15px 0;
       background-color: #2b2b2b;
-      word-break: break-word; /* Ensures long words or URLs wrap within the box */
+      word-break: break-word;
     }
     a {
       color: #4CAF50;
@@ -35,188 +35,229 @@
     .ot {
       color: black;
       font-weight: bold;
-      -webkit-text-stroke: 0.5px white; /* White outline */
+      -webkit-text-stroke: 0.5px white;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <p><a href="/qnasite/" style="display: inline-block; padding: 10px 20px; background-color: #474747; color: lightgray; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#5a6268'" onmouseout="this.style.backgroundColor='#474747'">back to inbox</a></p>
+    <!-- "back to inbox" uses window.location.replace(...) -->
+    <p>
+      <a href="/qnasite/"
+         style="display: inline-block; padding: 10px 20px; background-color: #474747; color: lightgray; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s;"
+         onmouseover="this.style.backgroundColor='#5a6268'"
+         onmouseout="this.style.backgroundColor='#474747'"
+         onclick="navigateBack(); return false;">
+        back to inbox
+      </a>
+    </p>
 
     <h1>qna history</h1>
 
-<div class="qna">
-  <p style="color: pink">1/4/2024 - 5:05 AM</p>
-  <p style="color: lightyellow"> Do you have heated electricity?</p>
-  <p>could you define "heated electricity"</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">1/1/2024 - 5:33 PM</p>
-  <p style="color: lightyellow"> طبيعي و لا صيني ههه</p>
-  <p>hilarous</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">1/1/2024 - 5:08 PM</p>
-  <p style="color: lightyellow"> HBD Adam</p>
-  <p style="font-size: 0.1em;">the website isn't really meant for that but</p>
-  thabks<p></p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/14/2024 - 11:56 PM</p>
-  <p style="color: lightyellow"> Why are they so excited to know your crush the name?</p>
-  <p>I don't think it's that they're excited but just curious</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">1/4/2024 - 5:05 AM</p>
+      <p style="color: lightyellow"> Do you have heated electricity?</p>
+      <p>could you define "heated electricity"</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/14/2024 - 4:18 PM</p>
-  <p style="color: lightyellow"> In laughter and in quiet talks, In sunny days and moonlit walks, A friend like you is rare to find, With kindness, strength, and heart combined. Through highs and lows, you’re always near, A steady voice, a friend so dear. Here’s to the bond we proudly share, A friendship true, beyond compare.</p>
-  <p>yes thank you I defenitely read all of this random stuff you copied and pasted and I defenitly care</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/14/2024 - 3:41 PM</p>
-  <p style="color: lightyellow"> Are u inside of portal?</p>
-  <p>the game or an actual portal? either way the answer is no</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/14/2024 - 1:04 PM</p>
-  <p style="color: lightyellow"> What's your crush name</p>
-  <p>here's a hint: it exists</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/14/2024 - 12:56 PM</p>
-  <p style="color: lightyellow"> If you are brave say your crush name</p>
-  <p>your crush name</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/14/2024 - 10:41 AM</p>
-  <p style="color: lightyellow"> Guess who am i</p>
-  <p>you are with no doubt in my mind, a person</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/13/2024 - 6:52 PM</p>
-  <p style="color: lightyellow"> What do you think of geese?</p>
-  <p>I don't think of geese that often but now that I am I'd say they're ok and also definitely one of the types of birds</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/13/2024 - 6:25 PM</p>
-  <p style="color: lightyellow"> do you have a crush on hamada?</p>
-  <p>I would've said yes but then everyone would take it seriously</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/13/2024 - 5:27 PM</p>
-  <p style="color: lightyellow"> Hey adam adam hey adam hey adam hey adam hey adam hey hey adam</p>
-  <p>am I suppose to match your tone and say hi stranger stranger hi stranger hi stranger hi stranger hi stranger hi hi stranger?</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/13/2024 - 3:31 PM</p>
-  <p style="color: lightyellow"> Do you have a crush on someone in your school</p>
-  <p>no</p>
-</div>
-    
-<div class="qna">
-  <p style="color: pink">11/13/2024 - 3:19 PM</p>
-  <p style="color: lightyellow">Do you have a crush on someone</p>
-  <audio controls class="custom-audio">
-    <source src="https://adammady.github.io/qnasite/1113.MP3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-</div>
+    <div class="qna">
+      <p style="color: pink">1/1/2024 - 5:33 PM</p>
+      <p style="color: lightyellow"> طبيعي و لا صيني ههه</p>
+      <p>hilarous</p>
+    </div>
 
-<style>
-  .custom-audio::-webkit-media-controls-panel {
-    background-color: #9e9e9e; /* Light gray background */
-  }
-</style>
-    
-<div class="qna">
-  <p style="color: pink">11/10/2024 - 10:24 AM</p>
-  <p style="color: lightyellow"> grartin</p>
-  <p>I completely agree with this</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">1/1/2024 - 5:08 PM</p>
+      <p style="color: lightyellow"> HBD Adam</p>
+      <p style="font-size: 0.1em;">the website isn't really meant for that but</p>
+      thabks<p></p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/10/2024 - 2:22 AM</p>
-  <p style="color: lightyellow"> Do you miss 7amada ?</p>
-  <p>yes :(</p>
-  <p style="color: gray"> in addition: i kept this one with the name because no one knows who "7amada" is</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/14/2024 - 11:56 PM</p>
+      <p style="color: lightyellow"> Why are they so excited to know your crush the name?</p>
+      <p>I don't think it's that they're excited but just curious</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 10:29 PM</p>
-  <p style="color: lightyellow"> Enta 3arf Ana meen</p>
-  <p>no but if you tell me I won't share the question and I wont answer questions with names because if someone really wanted to ask something in private they can do it in my dms</p>
-  <p style="color: gray">update: later found out my cousin asked this one and they were gonna say they're the person who said the crush thing but then decided to call me and tell me it was them (i don't know who sent the crush message but it wasn't my cousin)</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/14/2024 - 4:18 PM</p>
+      <p style="color: lightyellow">
+        In laughter and in quiet talks, In sunny days and moonlit walks, A friend like you is rare to find, With kindness, strength, and heart combined.
+        Through highs and lows, you’re always near, A steady voice, a friend so dear. Here’s to the bond we proudly share, A friendship true, beyond compare.
+      </p>
+      <p>yes thank you I defenitely read all of this random stuff you copied and pasted and I defenitly care</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 9:29 PM</p>
-  <p style="color: lightyellow"> Why did you disappear</p>
-  <p>because I wanted to start over but didn't know how to start over smoothly and then I started over in a snappy way anyway because there was no way to start over smoothly and because I didn't feel like making videos</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/14/2024 - 3:41 PM</p>
+      <p style="color: lightyellow"> Are u inside of portal?</p>
+      <p>the game or an actual portal? either way the answer is no</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 8:26 PM</p>
-  <p style="color: lightyellow"> ليه مش بطيق اقعد معايا انا معاك في الفصل و المدرسة</p>
-  <p>I would know the exact reason if I knew who I was talking to but probably and mostly because of what you do when I do sit next to you</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/14/2024 - 1:04 PM</p>
+      <p style="color: lightyellow"> What's your crush name</p>
+      <p>here's a hint: it exists</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 8:10 PM</p>
-  <p style="color: lightyellow"> What's your hobby?</p>
-  <p>everything that isn't a physical sport</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/14/2024 - 12:56 PM</p>
+      <p style="color: lightyellow"> If you are brave say your crush name</p>
+      <p>your crush name</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 7:55 PM</p>
-  <p style="color: lightyellow"> Akter 7d msh bt7bo fe el madrasha</p>
-  <p>I just realised I didn't see the t last time I read this so I'll reanswer: I don't hold grudges against anyone and I always forgive everyone even if they wronged me and if I did hate someone in particular I wouldn't say who as they'd probably see this</p>
-  <p style="color: gray">old reply: there's no good reply to this one but I won't be defensive I can get on some people's nerves sometimes</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/14/2024 - 10:41 AM</p>
+      <p style="color: lightyellow"> Guess who am i</p>
+      <p>you are with no doubt in my mind, a person</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 7:28 PM</p>
-  <p style="color: lightyellow"> Ur voice is so beautiful</p>
-  <p>sometimes I wish to go back in time and change some parts in some songs and I have this problem where my voice sounds better in real life than on the mic but I believe that's just the same with everyone</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/13/2024 - 6:52 PM</p>
+      <p style="color: lightyellow"> What do you think of geese?</p>
+      <p>I don't think of geese that often but now that I am I'd say they're ok and also definitely one of the types of birds</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 7:02 PM</p>
-  <p style="color: lightyellow"> How are you?</p>
-  <p>I'm doing fine</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/13/2024 - 6:25 PM</p>
+      <p style="color: lightyellow"> do you have a crush on hamada?</p>
+      <p>I would've said yes but then everyone would take it seriously</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 6:58 PM</p>
-  <p style="color: lightyellow"> I know you don't know me but I have a crush on you, ana fi NFS el mdrsa el enta fiha</p>
-  <p>It's very difficult for me to believe you and I believe that you're someone that's just trying to get a quick laugh but if it's true I'll say that some people have liked me before then I found out during the time they did and I sometimes did like them back but I never get the courage to say it</p>
-  <p style="color: gray"> correction: i actually only liked them back once now that i think about it but i do get to find out when people like me alot of times but i mostly don't do anything about it and it just gets really awkward and then they lose interest</p>
+    <div class="qna">
+      <p style="color: pink">11/13/2024 - 5:27 PM</p>
+      <p style="color: lightyellow"> Hey adam adam hey adam hey adam hey adam hey adam hey hey adam</p>
+      <p>am I suppose to match your tone and say hi stranger stranger hi stranger hi stranger hi stranger hi stranger hi hi stranger?</p>
+    </div>
 
-</div>
+    <div class="qna">
+      <p style="color: pink">11/13/2024 - 3:31 PM</p>
+      <p style="color: lightyellow"> Do you have a crush on someone in your school</p>
+      <p>no</p>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 6:53 PM</p>
-  <p style="color: lightyellow"> love you my friend</p>
-  <p>I probably love you too whoever you are</p>
-</div>
+    <div class="qna">
+      <p style="color: pink">11/13/2024 - 3:19 PM</p>
+      <p style="color: lightyellow">Do you have a crush on someone</p>
+      <audio controls class="custom-audio">
+        <source src="https://adammady.github.io/qnasite/1113.MP3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
 
-<div class="qna">
-  <p style="color: pink">11/9/2024 - 6:50 PM</p>
-  <p style="color: lightyellow"> Did you produce the two songs you recently released?</p>
-  <p>not fully I find songs and try to mimic the instrumental best I can then release it though I would like do it someday and I have tried but it's pretty difficult because 1. I have no equipment 2. I wouldn't know how to use it</p>
-</div>
+    <style>
+      .custom-audio::-webkit-media-controls-panel {
+        background-color: #9e9e9e; /* Light gray background */
+      }
+    </style>
 
-   
+    <div class="qna">
+      <p style="color: pink">11/10/2024 - 10:24 AM</p>
+      <p style="color: lightyellow"> grartin</p>
+      <p>I completely agree with this</p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/10/2024 - 2:22 AM</p>
+      <p style="color: lightyellow"> Do you miss 7amada ?</p>
+      <p>yes :(</p>
+      <p style="color: gray"> in addition: i kept this one with the name because no one knows who "7amada" is</p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 10:29 PM</p>
+      <p style="color: lightyellow"> Enta 3arf Ana meen</p>
+      <p>no but if you tell me I won't share the question and I wont answer questions with names because if someone really wanted to ask something in private they can do it in my dms</p>
+      <p style="color: gray">
+        update: later found out my cousin asked this one and they were gonna say they're the person who said the crush thing but then decided to call me and tell me it was them
+        (i don't know who sent the crush message but it wasn't my cousin)
+      </p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 9:29 PM</p>
+      <p style="color: lightyellow"> Why did you disappear</p>
+      <p>because I wanted to start over but didn't know how to start over smoothly and then I started over in a snappy way anyway because there was no way to start over smoothly and because I didn't feel like making videos</p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 8:26 PM</p>
+      <p style="color: lightyellow"> ليه مش بطيق اقعد معايا انا معاك في الفصل و المدرسة</p>
+      <p>I would know the exact reason if I knew who I was talking to but probably and mostly because of what you do when I do sit next to you</p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 8:10 PM</p>
+      <p style="color: lightyellow"> What's your hobby?</p>
+      <p>everything that isn't a physical sport</p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 7:55 PM</p>
+      <p style="color: lightyellow"> Akter 7d msh bt7bo fe el madrasha</p>
+      <p>
+        I just realised I didn't see the t last time I read this so I'll reanswer:
+        I don't hold grudges against anyone and I always forgive everyone even if they wronged me
+        and if I did hate someone in particular I wouldn't say who as they'd probably see this
+      </p>
+      <p style="color: gray">
+        old reply: there's no good reply to this one but I won't be defensive
+        I can get on some people's nerves sometimes
+      </p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 7:28 PM</p>
+      <p style="color: lightyellow"> Ur voice is so beautiful</p>
+      <p>
+        sometimes I wish to go back in time and change some parts in some songs and
+        I have this problem where my voice sounds better in real life than on the mic
+        but I believe that's just the same with everyone
+      </p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 7:02 PM</p>
+      <p style="color: lightyellow"> How are you?</p>
+      <p>I'm doing fine</p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 6:58 PM</p>
+      <p style="color: lightyellow"> I know you don't know me but I have a crush on you, ana fi NFS el mdrsa el enta fiha</p>
+      <p>
+        It's very difficult for me to believe you and I believe that you're someone that's just trying to get a quick laugh
+        but if it's true I'll say that some people have liked me before then I found out during the time they did
+        and I sometimes did like them back but I never get the courage to say it
+      </p>
+      <p style="color: gray">
+        correction: i actually only liked them back once now that i think about it
+        but i do get to find out when people like me alot of times but i mostly don't do anything about it
+        and it just gets really awkward and then they lose interest
+      </p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 6:53 PM</p>
+      <p style="color: lightyellow"> love you my friend</p>
+      <p>I probably love you too whoever you are</p>
+    </div>
+
+    <div class="qna">
+      <p style="color: pink">11/9/2024 - 6:50 PM</p>
+      <p style="color: lightyellow"> Did you produce the two songs you recently released?</p>
+      <p>
+        not fully I find songs and try to mimic the instrumental best I can
+        then release it though I would like do it someday and I have tried
+        but it's pretty difficult because 1. I have no equipment 2. I wouldn't know how to use it
+      </p>
+    </div>
   </div>
+
+  <script>
+    function navigateBack() {
+      window.location.replace('/qnasite/');
+    }
+  </script>
 </body>
 </html>
