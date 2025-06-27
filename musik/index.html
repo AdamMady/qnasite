@@ -45,7 +45,6 @@
       font-weight: bold;
       font-size: 1.2em;
       margin: 5px 0;
-      text-transform: lowercase;
     }
     .song-date {
       color: pink;
@@ -186,7 +185,7 @@
 
     // Render songs
     songs.forEach(song => {
-      const encodedTitle = encodeURIComponent(song.title.toLowerCase());
+      const encodedTitle = encodeURIComponent(song.title);
 
       // Create song element
       const qnaDiv = document.createElement('div');
