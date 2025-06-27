@@ -137,7 +137,7 @@
     <h1>music archive</h1>
 
     <!-- Songs will be dynamically added here by JavaScript -->
-    
+
     <div class="background-note">
       <p>tried to export them all in the highest quality possible</p>
     </div>
@@ -204,7 +204,7 @@
       // Title
       const title = document.createElement('p');
       title.className = 'song-title';
-      title.textContent = song.title.toLowerCase();
+      title.textContent = song.title; // preserve original casing
 
       // Date
       const date = document.createElement('p');
@@ -217,9 +217,10 @@
 
       // Audio player
       const audio = document.createElement('audio');
-      audio.className = 'audio-player custom-audio'; 
+      audio.className = 'audio-player custom-audio';
       audio.controls = true;
-      audio.setAttribute('controlsList', 'nodownload noplaybackrate'); // Remove download and playback rate options
+      audio.preload = 'none'; // load only on play
+      audio.setAttribute('controlsList', 'nodownload noplaybackrate');
 
       const source = document.createElement('source');
       source.src = `${baseMusicURL}${encodedTitle}.WAV`;
@@ -245,7 +246,7 @@
       // Download button
       const downloadButton = document.createElement('button');
       downloadButton.className = 'download-button';
-      downloadButton.textContent = '⤓'; 
+      downloadButton.textContent = '⤓';
       downloadButton.setAttribute('aria-label', `Download ${song.title}`);
       downloadButton.style.fontFamily = '"Segoe UI Symbol", Arial, sans-serif';
 
