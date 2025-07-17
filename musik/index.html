@@ -32,6 +32,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative; /* Added for positioning the bill icon */
     }
     .song-cover {
       max-width: 200px; /* Set the maximum width */
@@ -39,6 +40,17 @@
       border-radius: 8px;
       border: 1px solid #666565;
       margin-bottom: 10px;
+    }
+    /* New styles for the bill link icon */
+    .bill-link {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+    }
+    .bill-link img {
+        width: 30px;
+        height: auto;
     }
 
     .song-title {
@@ -148,24 +160,23 @@
       window.location.replace('/qnasite/');
     }
 
-    // Song data with title and date only
+    // Song data with title, date, and the new "bill" link property
     const songs = [
-      { title: "SUMMERTIME!", date: "june 27th 2025" },
-      { title: "happy new year to", date: "january 1st 2025" },
-      { title: "the sun is leaking", date: "december 18th 2024" },
-      { title: "kill people with rocks", date: "december 16th 2024" },
-      { title: "what the fuck", date: "december 16th 2024" },
-      { title: "love has got to be everything", date: "november 26th 2024" },
-      { title: "take you away", date: "november 23rd 2024" },
-      { title: "yes", date: "november 13rd 2024" },
-      { title: "time", date: "november 12th 2024" },
-      { title: "i wanna be with you", date: "november 8th 2024" },
-      { title: "good night", date: "november 8th 2024" }
+      { title: "SUMMERTIME!", date: "june 27th 2025", bill: "https://billwurtz.com/the%20summertime.mp3" },
+      { title: "happy new year to", date: "january 1st 2025", bill: "" },
+      { title: "the sun is leaking", date: "december 18th 2024", bill: "" },
+      { title: "kill people with rocks", date: "december 16th 2024", bill: "" },
+      { title: "what the fuck", date: "december 16th 2024", bill: "" },
+      { title: "love has got to be everything", date: "november 26th 2024", bill: "https://billwurtz.com/the%20trees%20(okay,%20alright).mp3" },
+      { title: "take you away", date: "november 23rd 2024", bill: "https://billwurtz.com/i-wanna-sail-you-away.mp3" },
+      { title: "yes", date: "november 13rd 2024", bill: "https://billwurtz.com/yes.mp3" },
+      { title: "time", date: "november 12th 2024", bill: "https://billwurtz.com/alphabet-shuffle.mp3" },
+      { title: "i wanna be with you", date: "november 8th 2024", bill: "https://billwurtz.com/i%20wanna%20be%20with%20you.mp3" },
+      { title: "good night", date: "november 8th 2024", bill: "https://billwurtz.com/the-road.mp3" }
     ];
 
     // Function to parse date strings to Date objects
     function parseDate(dateStr) {
-      // Replace ordinal suffixes (st, nd, rd, th)
       const cleanedDateStr = dateStr.replace(/(\d+)(st|nd|rd|th)/, '$1');
       return new Date(Date.parse(cleanedDateStr));
     }
@@ -191,12 +202,28 @@
       const qnaDiv = document.createElement('div');
       qnaDiv.className = 'qna';
 
+      // NEW: Check for and add the bill link if it exists
+      if (song.bill) { // An empty string is falsy, so this handles empty links
+        const billLink = document.createElement('a');
+        billLink.href = song.bill;
+        billLink.target = '_blank'; // Open link in a new tab
+        billLink.rel = 'noopener noreferrer';
+        billLink.className = 'bill-link';
+        billLink.setAttribute('aria-label', `View bill for ${song.title}`);
+
+        const billImg = document.createElement('img');
+        billImg.src = 'https://adammady.github.io/qnasite/bill.png';
+        billImg.alt = 'Bill icon';
+
+        billLink.appendChild(billImg);
+        qnaDiv.appendChild(billLink);
+      }
+
       // Cover image
       const img = document.createElement('img');
       img.className = 'song-cover';
       img.src = `${baseCoverURL}${encodedTitle}.png`;
       img.alt = `cover of ${song.title}`;
-      // Handle image loading errors
       img.onerror = () => {
         img.src = 'https://via.placeholder.com/200?text=No+Cover';
       };
@@ -219,7 +246,7 @@
       const audio = document.createElement('audio');
       audio.className = 'audio-player custom-audio';
       audio.controls = true;
-      audio.preload = 'none'; // load only on play
+      audio.preload = 'none';
       audio.setAttribute('controlsList', 'nodownload noplaybackrate');
 
       const source = document.createElement('source');
@@ -227,7 +254,6 @@
       source.type = 'audio/wav';
       audio.appendChild(source);
 
-      // Handle audio loading errors
       audio.onerror = () => {
         const errorMsg = document.createElement('p');
         errorMsg.style.color = 'red';
@@ -235,7 +261,6 @@
         audioDownloadContainer.replaceChild(errorMsg, audio);
       };
 
-      // Event listener to ensure only one audio plays at a time
       audio.addEventListener('play', () => {
         if (currentAudio && currentAudio !== audio) {
           currentAudio.pause();
@@ -250,9 +275,8 @@
       downloadButton.setAttribute('aria-label', `Download ${song.title}`);
       downloadButton.style.fontFamily = '"Segoe UI Symbol", Arial, sans-serif';
 
-      // Handle download
       downloadButton.addEventListener('click', async (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
+        e.preventDefault();
 
         const fileUrl = `${baseMusicURL}${encodedTitle}.WAV`;
         const fileName = `${song.title}.WAV`;
@@ -264,7 +288,6 @@
           const blob = await response.blob();
           const url = window.URL.createObjectURL(blob);
 
-          // Create a link and click it to trigger download
           const a = document.createElement('a');
           a.style.display = 'none';
           a.href = url;
@@ -272,7 +295,6 @@
           document.body.appendChild(a);
           a.click();
 
-          // Cleanup
           window.URL.revokeObjectURL(url);
           document.body.removeChild(a);
         } catch (error) {
@@ -281,7 +303,6 @@
         }
       });
 
-      // Add audio player and download button to container
       audioDownloadContainer.appendChild(audio);
       audioDownloadContainer.appendChild(downloadButton);
 
@@ -291,7 +312,6 @@
       qnaDiv.appendChild(date);
       qnaDiv.appendChild(audioDownloadContainer);
 
-      // Insert before the background-note
       container.insertBefore(qnaDiv, document.querySelector('.background-note'));
     });
   </script>
